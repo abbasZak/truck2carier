@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         $errors[] = "Account already exists.";
     }
 
-    if (!in_array($role, ['farmer', 'tractor'])) {
+    if (!in_array($role, ['farmer', 'truck_owner'])) {
         $errors[] = "Choose farmer or tractor owner.";
     }
 

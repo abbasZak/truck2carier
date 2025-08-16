@@ -223,188 +223,143 @@
 
             <div id="requestsList">
                 <!-- Sample Request Cards -->
-                <?php 
-                    foreach($requests as $request) {
-                        if ($farmersid) {
-                            ?>
-                        <div class="request-card" data-status="<?= $request['status']; ?>">
-                                <div class="request-header">
-                                    <div>
-                                        <div class="request-title"><?= $request['produce_type']; ?>Transport</div>
-                                        <div class="request-id">REQ-<?= $request['id']; ?></div>
-                                    </div>
-                                    <div class="status-badge status-pending"><?= $request['status']; ?></div>
-                                </div>
-                                
-                                <div class="request-details">
-                                    <div class="detail-item">
-                                        <div class="detail-icon">
-                                            <i class="fas fa-leaf"></i>
-                                        </div>
-                                        <div class="detail-content">
-                                            <h4>Produce</h4>
-                                            <p><?= $request['additional_information']; ?></p>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="detail-item">
-                                        <div class="detail-icon">
-                                            <i class="fas fa-map-marker-alt"></i>
-                                        </div>
-                                        <div class="detail-content">
-                                            <h4>Pickup</h4>
-                                            <p><?= $request['pickup_location']; ?></p>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="detail-item">
-                                        <div class="detail-icon">
-                                            <i class="fas fa-flag-checkered"></i>
-                                        </div>
-                                        <div class="detail-content">
-                                            <h4>Destination</h4>
-                                            <p><?= $request['destination']; ?></p>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="detail-item">
-                                        <div class="detail-icon">
-                                            <i class="fas fa-clock"></i>
-                                        </div>
-                                        <div class="detail-content">
-                                            <h4>Posted</h4>
-                                            <p>2 hours ago</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="request-actions">
-                                    <button class="action-btn btn-edit">
-                                        <i class="fas fa-edit"></i> Edit
-                                    </button>
-                                    <button class="action-btn btn-cancel">
-                                        <i class="fas fa-times"></i> Cancel
-                                    </button>
-                                </div>
-                            </div>
-                        
-                        <?php
-                        }
-                        
-                    }
-                ?>
-
+                <?php if (isset($farmersid)): ?>
+    <!-- User is logged in - show their requests -->
+    <?php foreach($requests as $request): ?>
+        <div class="request-card" data-status="<?= $request['status']; ?>">
+            <div class="request-header">
+                <div>
+                    <div class="request-title"><?= $request['produce_type']; ?> Transport</div>
+                    <div class="request-id">REQ-<?= $request['id']; ?></div>
+                </div>
+                <div class="status-badge status-pending"><?= $request['status']; ?></div>
+            </div>
+            
+            <div class="request-details">
+                <div class="detail-item">
+                    <div class="detail-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="detail-content">
+                        <h4>Produce</h4>
+                        <p><?= $request['additional_information']; ?></p>
+                    </div>
+                </div>
                 
-
-                <div class="request-card" data-status="in-transit">
-                    <div class="request-header">
-                        <div>
-                            <div class="request-title">Groundnuts Transport</div>
-                            <div class="request-id">REQ-002</div>
-                        </div>
-                        <div class="status-badge status-in-transit">In Transit</div>
+                <div class="detail-item">
+                    <div class="detail-icon">
+                        <i class="fas fa-map-marker-alt"></i>
                     </div>
-                    
-                    <div class="request-details">
-                        <div class="detail-item">
-                            <div class="detail-icon">
-                                <i class="fas fa-leaf"></i>
-                            </div>
-                            <div class="detail-content">
-                                <h4>Produce</h4>
-                                <p>Groundnuts - 200 Bags</p>
-                            </div>
-                        </div>
-                        
-                        <div class="detail-item">
-                            <div class="detail-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="detail-content">
-                                <h4>Pickup</h4>
-                                <p>Potiskum</p>
-                            </div>
-                        </div>
-                        
-                        <div class="detail-item">
-                            <div class="detail-icon">
-                                <i class="fas fa-flag-checkered"></i>
-                            </div>
-                            <div class="detail-content">
-                                <h4>Destination</h4>
-                                <p>Lagos State</p>
-                            </div>
-                        </div>
-                        
-                        <div class="detail-item">
-                            <div class="detail-icon">
-                                <i class="fas fa-truck"></i>
-                            </div>
-                            <div class="detail-content">
-                                <h4>Driver</h4>
-                                <p>Ibrahim Sani</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="request-actions">
-                        <button class="action-btn btn-track">
-                            <i class="fas fa-route"></i> Track
-                        </button>
+                    <div class="detail-content">
+                        <h4>Pickup</h4>
+                        <p><?= $request['pickup_location']; ?></p>
                     </div>
                 </div>
-
-                <div class="request-card" data-status="completed">
-                    <div class="request-header">
-                        <div>
-                            <div class="request-title">Maize Transport</div>
-                            <div class="request-id">REQ-003</div>
-                            </div>
-                        <div class="status-badge status-completed">Completed</div>
+                
+                <div class="detail-item">
+                    <div class="detail-icon">
+                        <i class="fas fa-flag-checkered"></i>
                     </div>
-
-                    <div class="request-details">
-                        <div class="detail-item">
-                            <div class="detail-icon">
-                                <i class="fas fa-leaf"></i>
-                            </div>
-                            <div class="detail-content">
-                                <h4>Produce</h4>
-                                <p>Maize - 10 Tons</p>
-                            </div>
-                        </div>
-
-                        <div class="detail-item">
-                            <div class="detail-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="detail-content">
-                                <h4>Pickup</h4>
-                                <p>Gashua</p>
-                            </div>
-                        </div>
-
-                        <div class="detail-item">
-                            <div class="detail-icon">
-                                <i class="fas fa-flag-checkered"></i>
-                            </div>
-                            <div class="detail-content">
-                                <h4>Destination</h4>
-                                <p>Port Harcourt</p>
-                            </div>
-                        </div>
-
-                        <div class="detail-item">
-                            <div class="detail-icon">
-                                <i class="fas fa-calendar-check"></i>
-                            </div>
-                            <div class="detail-content">
-                                <h4>Completed</h4>
-                                <p>2 days ago</p>
-                            </div>
-                        </div>
+                    <div class="detail-content">
+                        <h4>Destination</h4>
+                        <p><?= $request['destination']; ?></p>
                     </div>
                 </div>
+                
+                <div class="detail-item">
+                    <div class="detail-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="detail-content">
+                        <h4>Posted</h4>
+                        <p>2 hours ago</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="request-actions">
+                <button class="action-btn btn-edit">
+                    <i class="fas fa-edit"></i> Edit
+                </button>
+                <button class="action-btn btn-cancel">
+                    <i class="fas fa-times"></i> Cancel
+                </button>
+            </div>
+        </div>
+    <?php endforeach; ?>
+
+    <!-- Static example cards (you can remove these if you only want dynamic content) -->
+    
+
+    
+
+<?php else: ?>
+    <!-- User is not logged in - show signin required message -->
+    <div class="signin-required">
+        <div class="signin-icon">
+            <i class="fas fa-lock"></i>
+        </div>
+        <h2 class="signin-title">Sign In Required</h2>
+        <p class="signin-description">
+            Please sign in to your account to view your transport requests and track your shipments. 
+            If you don't have an account yet, create one to get started with our services.
+        </p>
+        
+        <div class="signin-actions">
+            <a href="login.php" class="signin-btn btn-signin">
+                <i class="fas fa-sign-in-alt"></i>
+                Sign In
+            </a>
+            <a href="Registration.php" class="signin-btn btn-signup">
+                <i class="fas fa-user-plus"></i>
+                Create Account
+            </a>
+        </div>
+
+        <div class="features-list">
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <i class="fas fa-truck"></i>
+                </div>
+                <div class="feature-text">
+                    <div class="feature-title">Track Your Requests</div>
+                    <div class="feature-desc">Monitor your transport requests in real-time</div>
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <i class="fas fa-history"></i>
+                </div>
+                <div class="feature-text">
+                    <div class="feature-title">Request History</div>
+                    <div class="feature-desc">Access all your past and current shipments</div>
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <i class="fas fa-bell"></i>
+                </div>
+                <div class="feature-text">
+                    <div class="feature-title">Get Notifications</div>
+                    <div class="feature-desc">Receive updates on your transport status</div>
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="feature-text">
+                    <div class="feature-title">Secure Platform</div>
+                    <div class="feature-desc">Your data and transactions are protected</div>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
+ 
             </div>
         </div>
     </div>
