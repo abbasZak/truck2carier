@@ -1,0 +1,301 @@
+Array
+(
+    [requestId] => 4
+)
+
+Request ID: 4, Status: accepted
+Query: UPDATE transport_requests SET status = ? WHERE id = ?
+Params: accepted, 4
+Affected rows: 1
+Array
+(
+    [requestId] => 4
+)
+
+Request ID: 4, Status: accepted
+Query: UPDATE transport_requests SET status = ? WHERE id = ?
+Params: accepted, 4
+Affected rows: 0
+Array
+(
+    [requestId] => 4
+)
+
+Request ID: 4, Status: accepted
+Query: UPDATE transport_requests SET status = ? WHERE id = ?
+Params: accepted, 4
+Affected rows: 0
+Array
+(
+    [requestId] => 4
+)
+
+Request ID: 4, Status: accepted
+Query: UPDATE transport_requests SET status = ? WHERE id = ?
+Params: accepted, 4
+Affected rows: 0
+Array
+(
+    [requestId] => 3
+)
+
+Request ID: 3, Status: accepted
+Query: UPDATE transport_requests SET status = ? WHERE id = ?
+Params: accepted, 3
+Affected rows: 1
+POST Data: Array
+(
+    [requestId] => 4
+)
+
+
+Cleaned Request ID: '4', Status: 'accepted'
+Request ID type: string
+Request ID length: 1
+Existing record check: Array
+(
+    [id] => 4
+    [status] => 
+)
+
+Query: UPDATE transport_requests SET status = ? WHERE id = ?
+Params: ['accepted', '4']
+Execute result: true
+Affected rows: 0
+POST Data: Array
+(
+    [requestId] => 4
+)
+
+
+Cleaned Request ID: '4', Status: 'accepted'
+Request ID type: string
+Request ID length: 1
+PDO Exception: SQLSTATE[42000]: Syntax error or access violation: 1305 FUNCTION truck2carier.TYPEOF does not exist
+POST Data: Array
+(
+    [requestId] => 4
+)
+
+
+Cleaned Request ID: '4', Status: 'accepted'
+Request ID type: string
+Request ID length: 1
+All records sample: Array
+(
+    [0] => Array
+        (
+            [id] => 1
+            [status] => pending
+        )
+
+    [1] => Array
+        (
+            [id] => 2
+            [status] => pending
+        )
+
+    [2] => Array
+        (
+            [id] => 3
+            [status] => 
+        )
+
+    [3] => Array
+        (
+            [id] => 4
+            [status] => 
+        )
+
+)
+
+String search result: Array
+(
+    [id] => 4
+    [status] => 
+)
+
+Integer search result: Array
+(
+    [id] => 4
+    [status] => 
+)
+
+Query: UPDATE transport_requests SET status = ? WHERE id = ?
+Params: ['accepted', '4'] (using string ID)
+Execute result: true
+Affected rows: 0
+POST Data: Array
+(
+    [requestId] => 4
+)
+
+
+Cleaned Request ID: '4', Status: 'accepted'
+Request ID type: string
+Request ID length: 1
+All records sample: Array
+(
+    [0] => Array
+        (
+            [id] => 1
+            [status] => pending
+        )
+
+    [1] => Array
+        (
+            [id] => 2
+            [status] => pending
+        )
+
+    [2] => Array
+        (
+            [id] => 3
+            [status] => pending
+        )
+
+    [3] => Array
+        (
+            [id] => 4
+            [status] => pending
+        )
+
+)
+
+String search result: Array
+(
+    [id] => 4
+    [status] => pending
+)
+
+Integer search result: Array
+(
+    [id] => 4
+    [status] => pending
+)
+
+Query: UPDATE transport_requests SET status = ? WHERE id = ?
+Params: ['accepted', '4'] (using string ID)
+Execute result: true
+Affected rows: 1
+Verification - Updated record: Array
+(
+    [status] => 
+)
+
+POST Data: Array
+(
+    [requestId] => 4
+)
+
+
+Cleaned Request ID: '4', Status: 'completed'
+Request ID type: string
+Request ID length: 1
+All records sample: Array
+(
+    [0] => Array
+        (
+            [id] => 1
+            [status] => pending
+        )
+
+    [1] => Array
+        (
+            [id] => 2
+            [status] => pending
+        )
+
+    [2] => Array
+        (
+            [id] => 3
+            [status] => pending
+        )
+
+    [3] => Array
+        (
+            [id] => 4
+            [status] => pending
+        )
+
+)
+
+String search result: Array
+(
+    [id] => 4
+    [status] => pending
+)
+
+Integer search result: Array
+(
+    [id] => 4
+    [status] => pending
+)
+
+Query: UPDATE transport_requests SET status = ? WHERE id = ?
+Params: ['completed', '4'] (using string ID)
+Execute result: true
+Affected rows: 1
+Verification - Updated record: Array
+(
+    [status] => completed
+)
+
+POST Data: Array
+(
+    [requestId] => 4
+)
+
+
+Cleaned Request ID: '4', Status: 'matched'
+Request ID type: string
+Request ID length: 1
+All records sample: Array
+(
+    [0] => Array
+        (
+            [id] => 1
+            [status] => pending
+        )
+
+    [1] => Array
+        (
+            [id] => 2
+            [status] => pending
+        )
+
+    [2] => Array
+        (
+            [id] => 3
+            [status] => pending
+        )
+
+    [3] => Array
+        (
+            [id] => 4
+            [status] => completed
+        )
+
+)
+
+String search result: Array
+(
+    [id] => 4
+    [status] => completed
+)
+
+Integer search result: Array
+(
+    [id] => 4
+    [status] => completed
+)
+
+Query: UPDATE transport_requests SET status = ? WHERE id = ?
+Params: ['matched', '4'] (using string ID)
+Execute result: true
+Affected rows: 1
+Verification - Updated record: Array
+(
+    [status] => matched
+)
+
