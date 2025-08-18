@@ -75,7 +75,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         if ($result) {
             if ($role == "farmer") {
                 $_SESSION['farmer_id'] = getAccountValue($pdo, 'phone', $phoneNumber, 'id');
-                header("Location: farmerspage.php");
+                header("location: additionalFarmersPage.php");
+                
             } else {
                 $_SESSION['tractor_id'] = getAccountValue($pdo, 'phone', $phoneNumber, 'id');
                 header("Location: tractorsdashboard.php");

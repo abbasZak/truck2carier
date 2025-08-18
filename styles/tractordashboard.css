@@ -1370,6 +1370,57 @@ body.modal-open {
     animation: spin 1s linear infinite;
 }
 
+
+        /* Add these new styles to your tractordashboard.css */
+        .status-badge {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+
+        .status-badge.matched {
+            background: #4a6bdf;
+            color: white;
+        }
+
+        .status-badge.completed {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .status-badge.cancelled {
+            background: #f44336;
+            color: white;
+        }
+
+        .request-card[data-status="matched"] {
+            border-left: 4px solid #4a6bdf;
+        }
+
+        .request-card[data-status="pending"] {
+            border-left: 4px solid #FF9800;
+        }
+
+        .request-card[data-status="completed"] {
+            display: none !important;
+        }
+
+        @media (max-width: 768px) {
+            .status-badge {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+            
+            .request-actions {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+
 /* Enhanced Animations */
 @keyframes fadeIn { 
     from { opacity: 0; } 

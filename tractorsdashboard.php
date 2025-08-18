@@ -229,22 +229,26 @@ if ($tracktorId) {
                         </div>
 
                         <div class="request-actions">
-                            <button class="action-btn btn-details" onclick="showModal('Request Details')">
-                                <i class="fas fa-info-circle"></i> Details
-                            </button>
-                            <!-- Replace this button in your PHP loop -->
-                            <button class="action-btn btn-accept" onclick="acceptRequest(
-                                <?= $request['request_id']; ?>, 
-                                '<?= htmlspecialchars($request['produce_type'], ENT_QUOTES); ?>', 
-                                '<?= htmlspecialchars($request['quantity'], ENT_QUOTES); ?>', 
-                                '<?= htmlspecialchars($request['pickup_location'], ENT_QUOTES); ?>', 
-                                '<?= htmlspecialchars($request['destination'], ENT_QUOTES); ?>', 
-                                '<?= htmlspecialchars($request['urgency_level'], ENT_QUOTES); ?>', 
-                                '<?= htmlspecialchars($request['farmer_name'], ENT_QUOTES); ?>'
-                            )">
-                                 
-                                <i class="fas fa-check"></i> Accept
-                            </button>
+                            <?php if ($request['status'] == 'pending'): ?>
+                                <button class="action-btn btn-details" onclick="showModal('Request Details')">
+                                    <i class="fas fa-info-circle"></i> Details
+                                </button>
+                                <button class="action-btn btn-accept" onclick="acceptRequest(
+                                    <?= $request['request_id']; ?>, 
+                                    '<?= htmlspecialchars($request['produce_type'], ENT_QUOTES); ?>', 
+                                    '<?= htmlspecialchars($request['quantity'], ENT_QUOTES); ?>', 
+                                    '<?= htmlspecialchars($request['pickup_location'], ENT_QUOTES); ?>', 
+                                    '<?= htmlspecialchars($request['destination'], ENT_QUOTES); ?>', 
+                                    '<?= htmlspecialchars($request['urgency_level'], ENT_QUOTES); ?>', 
+                                    '<?= htmlspecialchars($request['farmer_name'], ENT_QUOTES); ?>'
+                                )">
+                                    <i class="fas fa-check"></i> Accept
+                                </button>
+                            <?php elseif ($request['status'] == 'matched'): ?>
+                                <div class="status-badge matched">
+                                    <i class="fas fa-link"></i> Matched with You
+                                </div>
+                            <?php endif; ?>
                         </div>
                     </div>
                     <?php endforeach; ?>
@@ -287,7 +291,7 @@ if ($tracktorId) {
                         <i class="fas fa-user-plus"></i>
                         Create Account
                     </a>
-                    <a href="login.php" class="auth-btn secondary">
+                    <a href="Registration.php" class="auth-btn secondary">
                         <i class="fas fa-sign-in-alt"></i>
                         Login
                     </a>

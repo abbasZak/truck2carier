@@ -55,12 +55,16 @@
                         <?php
                     } else {
                         ?>
-                            <div class="user-avatar">
+                            <a href="farmersProfilePage.php">
+                                <div class="user-avatar">
                                 A
                                 <div class="notification-dot"></div>
                             </div>
+                            <span><?= $user['name']; ?></span>    
+                        </a>
+                            
                         
-                            <span><?= $user['name']; ?></span>
+                            
 
                             <form action="logout.php" method="post">
                                 <button type="submit" class="logout-btn" name="Logout">
@@ -216,7 +220,7 @@
                 <div class="filter-tabs">
                     <button class="filter-tab active" onclick="filterRequests('all')">All</button>
                     <button class="filter-tab" onclick="filterRequests('pending')">Pending</button>
-                    <button class="filter-tab" onclick="filterRequests('in-transit')">In Transit</button>
+                    <button class="filter-tab" onclick="filterRequests('matched')">In Transit</button>
                     <button class="filter-tab" onclick="filterRequests('completed')">Completed</button>
                 </div>
             </div>
@@ -306,7 +310,7 @@
         </p>
         
         <div class="signin-actions">
-            <a href="login.php" class="signin-btn btn-signin">
+            <a href="Registration.php" class="signin-btn btn-signin">
                 <i class="fas fa-sign-in-alt"></i>
                 Sign In
             </a>
