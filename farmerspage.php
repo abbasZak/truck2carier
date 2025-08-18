@@ -283,12 +283,23 @@
             </div>
             
             <div class="request-actions">
+                <?php if($request['status'] === 'matched'): ?>
+                <button class="action-btn btn-delivered" >
+                    <i class="fas fa-check-circle"></i> 
+                    Delivered
+                </button>
+                <?php endif; ?>
+
                 <button class="action-btn btn-edit">
-                    <i class="fas fa-edit"></i> Edit
+                    
+                    
+                <i class='fas fa-edit'></i> Edit
                 </button>
                 <button class="action-btn btn-cancel">
                     <i class="fas fa-times"></i> Cancel
                 </button>
+
+                
             </div>
         </div>
     <?php endforeach; ?>

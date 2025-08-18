@@ -65,7 +65,7 @@
                         </div>
                         <div class="badge badge-secondary">
                             <i class="fas fa-calendar-alt"></i>
-                            <span id="experienceYears">10 <?= $farmer['years_of_experiece']; ?></span>
+                            <span id="experienceYears"><?= $farmer['years_of_experiece']; ?> years of experiece</span>
                         </div>
                     </div>
                 </div>
@@ -162,21 +162,7 @@
                 </div>
             </div>
 
-            <!-- Equipment & Services -->
-            <div class="detail-card" style="grid-column: span 2;">
-                <div class="card-header">
-                    <div class="card-icon">
-                        <i class="fas fa-tools"></i>
-                    </div>
-                    <h3 class="card-title">Equipment & Services Needed</h3>
-                </div>
-                <div class="detail-item">
-                    <div class="detail-label">Required Equipment</div>
-                    <div class="detail-value" id="equipmentNeeded">
-                        Land preparation tractors, planting equipment, harvesting machines, transportation services for grain storage and market delivery.
-                    </div>
-                </div>
-            </div>
+            
 
             <!-- Additional Information -->
             <div class="detail-card" style="grid-column: span 2;">
@@ -189,7 +175,7 @@
                 <div class="detail-item">
                     <div class="detail-label">Notes</div>
                     <div class="detail-value" id="additionalInfo">
-                        Prefer working early mornings and late evenings. Have storage facilities on-site. Usually need equipment during planting season (April-June) and harvest season (September-November). Willing to collaborate with neighboring farms for bulk services.
+                        <?= $farmer['additional_information']; ?>
                     </div>
                 </div>
             </div>
