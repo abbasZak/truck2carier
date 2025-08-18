@@ -800,6 +800,15 @@
     background: rgba(255, 255, 255, 0.1);
 }
 
+.user-link {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+
 
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(-5px); }

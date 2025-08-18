@@ -55,13 +55,14 @@
                         <?php
                     } else {
                         ?>
-                            <a href="farmersProfilePage.php">
-                                <div class="user-avatar">
-                                A
-                                <div class="notification-dot"></div>
-                            </div>
-                            <span><?= $user['name']; ?></span>    
-                        </a>
+                            <a href="farmersProfilePage.php" class="user-link">
+    <div class="user-avatar">
+        A
+        <div class="notification-dot"></div>
+    </div>
+    <span><?= $user['name']; ?></span>    
+</a>
+
                             
                         
                             

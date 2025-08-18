@@ -249,6 +249,36 @@
             animation: float 8s ease-in-out infinite reverse;
         }
 
+        .error-message {
+    display: flex;
+    align-items: flex-start;
+    background-color: #ffe5e5;
+    color: #a94442;
+    border: 1px solid #f5c6cb;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    margin: 10px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.error-icon {
+    margin-right: 10px;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.error-list p {
+    margin: 0 0 5px;
+}
+
+.error-list p:last-child {
+    margin-bottom: 0;
+}
+
+
         @keyframes float {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
             50% { transform: translateY(-20px) rotate(5deg); }
