@@ -299,3 +299,522 @@ Verification - Updated record: Array
     [status] => matched
 )
 
+POST Data: Array
+(
+    [requestId] => 3
+)
+
+
+Cleaned Request ID: '3', Farmer ID: '', Status: 'matched'
+POST Data: Array
+(
+    [requestId] => 3
+)
+
+
+Cleaned Request ID: '3', Status: 'matched', Farmer ID: ''
+Request ID type: string
+Request ID length: 1
+POST Data: Array
+(
+    [requestId] => 3
+    [farmerId] => 4
+)
+
+SESSION Data: Array
+(
+    [farmer_id] => 4
+    [tractor_id] => 5
+    [trucks_error] => Array
+        (
+            [0] => Invalid license plate format. Expected format: ABC123 or ABC1234
+        )
+
+)
+
+
+Cleaned Request ID: '3', Status: 'matched', Farmer ID: '4'
+Request ID type: string
+Request ID length: 1
+Truck ID from session: '5'
+All records sample: Array
+(
+    [0] => Array
+        (
+            [id] => 1
+            [status] => pending
+        )
+
+    [1] => Array
+        (
+            [id] => 2
+            [status] => pending
+        )
+
+    [2] => Array
+        (
+            [id] => 3
+            [status] => pending
+        )
+
+    [3] => Array
+        (
+            [id] => 4
+            [status] => matched
+        )
+
+)
+
+String search result: Array
+(
+    [id] => 3
+    [status] => pending
+)
+
+Integer search result: Array
+(
+    [id] => 3
+    [status] => pending
+)
+
+Query: UPDATE transport_requests SET status = ? WHERE id = ?
+Params: ['matched', '3'] (using string ID)
+Execute result: true
+Affected rows: 1
+PDO Exception: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`truck2carier`.`matches`, CONSTRAINT `matches_ibfk_2` FOREIGN KEY (`truck_id`) REFERENCES `trucks` (`id`) ON DELETE CASCADE)
+POST Data: Array
+(
+    [requestId] => 3
+    [farmerId] => 4
+)
+
+SESSION Data: Array
+(
+    [farmer_id] => 4
+    [tractor_id] => 5
+    [trucks_error] => Array
+        (
+            [0] => Invalid license plate format. Expected format: ABC123 or ABC1234
+        )
+
+)
+
+
+Cleaned Request ID: '3', Status: 'matched', Farmer ID: '4'
+Request ID type: string
+Request ID length: 1
+Truck ID from session: '5'
+All records sample: Array
+(
+    [0] => Array
+        (
+            [id] => 1
+            [status] => pending
+        )
+
+    [1] => Array
+        (
+            [id] => 2
+            [status] => pending
+        )
+
+    [2] => Array
+        (
+            [id] => 3
+            [status] => pending
+        )
+
+    [3] => Array
+        (
+            [id] => 4
+            [status] => matched
+        )
+
+)
+
+String search result: Array
+(
+    [id] => 3
+    [status] => pending
+)
+
+Integer search result: Array
+(
+    [id] => 3
+    [status] => pending
+)
+
+Query: UPDATE transport_requests SET status = ? WHERE id = ?
+Params: ['matched', '3'] (using string ID)
+Execute result: true
+Affected rows: 1
+PDO Exception: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`truck2carier`.`matches`, CONSTRAINT `matches_ibfk_2` FOREIGN KEY (`truck_id`) REFERENCES `trucks` (`id`) ON DELETE CASCADE)
+POST Data: Array
+(
+    [requestId] => 3
+    [farmerId] => 4
+)
+
+SESSION Data: Array
+(
+    [farmer_id] => 4
+    [tractor_id] => 5
+    [trucks_error] => Array
+        (
+            [0] => Invalid license plate format. Expected format: ABC123 or ABC1234
+        )
+
+)
+
+
+Cleaned Request ID: '3', Status: 'matched', Farmer ID: '4'
+Request ID type: string
+Request ID length: 1
+Truck ID from session: '5'
+All records sample: Array
+(
+    [0] => Array
+        (
+            [id] => 1
+            [status] => pending
+        )
+
+    [1] => Array
+        (
+            [id] => 2
+            [status] => pending
+        )
+
+    [2] => Array
+        (
+            [id] => 3
+            [status] => pending
+        )
+
+    [3] => Array
+        (
+            [id] => 4
+            [status] => matched
+        )
+
+)
+
+String search result: Array
+(
+    [id] => 3
+    [status] => pending
+)
+
+Integer search result: Array
+(
+    [id] => 3
+    [status] => pending
+)
+
+Query: UPDATE transport_requests SET status = ? WHERE id = ?
+Params: ['matched', '3'] (using string ID)
+Execute result: true
+Affected rows: 1
+PDO Exception: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`truck2carier`.`matches`, CONSTRAINT `matches_ibfk_2` FOREIGN KEY (`truck_id`) REFERENCES `trucks` (`id`) ON DELETE CASCADE)
+POST Data: Array
+(
+    [requestId] => 2
+    [farmerId] => 4
+)
+
+SESSION Data: Array
+(
+    [farmer_id] => 4
+    [tractor_id] => 5
+    [trucks_error] => Array
+        (
+            [0] => Invalid license plate format. Expected format: ABC123 or ABC1234
+        )
+
+)
+
+
+Cleaned Request ID: '2', Status: 'matched', Farmer ID: '4'
+Truck ID from session: '5'
+POST Data: Array
+(
+    [requestId] => 3
+    [farmerId] => 4
+)
+
+SESSION Data: Array
+(
+    [farmer_id] => 4
+    [tractor_id] => 5
+    [trucks_error] => Array
+        (
+            [0] => Invalid license plate format. Expected format: ABC123 or ABC1234
+        )
+
+)
+
+
+Cleaned Request ID: '3', Status: 'matched', Farmer ID: '4'
+Truck ID from session: '5'
+POST Data: Array
+(
+    [requestId] => 3
+    [farmerId] => 4
+)
+
+SESSION Data: Array
+(
+    [farmer_id] => 4
+    [tractor_id] => 5
+    [trucks_error] => Array
+        (
+            [0] => Invalid license plate format. Expected format: ABC123 or ABC1234
+        )
+
+)
+
+
+Cleaned Request ID: '3', Status: 'matched', Farmer ID: '4'
+Truck ID from session: '5'
+Request search result: Array
+(
+    [id] => 3
+    [status] => pending
+)
+
+Query: UPDATE transport_requests SET status = ? WHERE id = ?
+Params: ['matched', '3']
+Execute result: true
+Affected rows: 1
+PDO Exception: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`truck2carier`.`matches`, CONSTRAINT `matches_ibfk_2` FOREIGN KEY (`truck_id`) REFERENCES `trucks` (`id`) ON DELETE CASCADE)
+POST Data: Array
+(
+    [requestId] => 3
+    [farmerId] => 4
+)
+
+SESSION Data: Array
+(
+    [farmer_id] => 4
+    [tractor_id] => 5
+    [trucks_error] => Array
+        (
+            [0] => Invalid license plate format. Expected format: ABC123 or ABC1234
+        )
+
+)
+
+
+Cleaned Request ID: '3', Status: 'matched', Farmer ID: '4'
+Truck ID from session: '5'
+Request search result: Array
+(
+    [id] => 3
+    [status] => pending
+)
+
+Query: UPDATE transport_requests SET status = ? WHERE id = ?
+Params: ['matched', '3']
+Execute result: true
+Affected rows: 1
+PDO Exception: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`truck2carier`.`matches`, CONSTRAINT `matches_ibfk_2` FOREIGN KEY (`truck_id`) REFERENCES `trucks` (`id`) ON DELETE CASCADE)
+POST Data: Array
+(
+    [requestId] => 3
+    [farmerId] => 4
+)
+
+SESSION Data: Array
+(
+    [farmer_id] => 4
+    [tractor_id] => 5
+    [trucks_error] => Array
+        (
+            [0] => Invalid license plate format. Expected format: ABC123 or ABC1234
+        )
+
+)
+
+
+Cleaned Request ID: '3', Status: 'matched', Farmer ID: '4'
+Truck ID from session: '5'
+Request search result: Array
+(
+    [id] => 3
+    [status] => pending
+)
+
+Query: UPDATE transport_requests SET status = ? WHERE id = ?
+Params: ['matched', '3']
+Execute result: true
+Affected rows: 1
+PDO Exception: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`truck2carier`.`matches`, CONSTRAINT `matches_ibfk_2` FOREIGN KEY (`truck_id`) REFERENCES `trucks` (`id`) ON DELETE CASCADE)
+POST Data: Array
+(
+    [requestId] => 3
+    [farmerId] => 4
+)
+
+SESSION Data: Array
+(
+    [farmer_id] => 4
+    [tractor_id] => 5
+    [trucks_error] => Array
+        (
+            [0] => Invalid license plate format. Expected format: ABC123 or ABC1234
+        )
+
+)
+
+
+Cleaned Request ID: '3', Status: 'matched', Farmer ID: '4'
+Truck ID from session: '5'
+Request search result: Array
+(
+    [id] => 3
+    [status] => pending
+)
+
+Query: UPDATE transport_requests SET status = ? WHERE id = ?
+Params: ['matched', '3']
+Execute result: true
+Affected rows: 1
+PDO Exception: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`truck2carier`.`matches`, CONSTRAINT `matches_ibfk_2` FOREIGN KEY (`truck_id`) REFERENCES `trucks` (`id`) ON DELETE CASCADE)
+POST Data: Array
+(
+    [requestId] => 3
+    [farmerId] => 4
+)
+
+SESSION Data: Array
+(
+    [farmer_id] => 4
+    [tractor_id] => 5
+    [trucks_error] => Array
+        (
+            [0] => Invalid license plate format. Expected format: ABC123 or ABC1234
+        )
+
+)
+
+
+Cleaned Request ID: '3', Status: 'matched', Farmer ID: '4'
+Truck ID from session: '5'
+Request search result: Array
+(
+    [id] => 3
+    [status] => pending
+)
+
+Query: UPDATE transport_requests SET status = ? WHERE id = ?
+Params: ['matched', '3']
+Execute result: true
+Affected rows: 1
+PDO Exception: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`truck2carier`.`matches`, CONSTRAINT `matches_ibfk_2` FOREIGN KEY (`truck_id`) REFERENCES `trucks` (`id`) ON DELETE CASCADE)
+POST Data: Array
+(
+    [requestId] => 3
+    [farmerId] => 4
+)
+
+SESSION Data: Array
+(
+    [farmer_id] => 4
+    [tractor_id] => 5
+    [trucks_error] => Array
+        (
+            [0] => Invalid license plate format. Expected format: ABC123 or ABC1234
+        )
+
+)
+
+
+Cleaned Request ID: '3', Status: 'matched', Farmer ID: '4'
+Truck ID from session: '5'
+Request search result: Array
+(
+    [id] => 3
+    [status] => pending
+)
+
+Query: UPDATE transport_requests SET status = ? WHERE id = ?
+Params: ['matched', '3']
+Execute result: true
+Affected rows: 1
+PDO Exception: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`truck2carier`.`matches`, CONSTRAINT `matches_ibfk_2` FOREIGN KEY (`truck_id`) REFERENCES `trucks` (`id`) ON DELETE CASCADE)
+POST Data: Array
+(
+    [requestId] => 3
+    [farmerId] => 4
+)
+
+SESSION Data: Array
+(
+    [farmer_id] => 4
+    [tractor_id] => 5
+    [trucks_error] => Array
+        (
+            [0] => Invalid license plate format. Expected format: ABC123 or ABC1234
+        )
+
+)
+
+
+Cleaned Request ID: '3', Status: 'matched', Farmer ID: '4'
+User ID from session: '5'
+Actual Truck ID found: '1' for User ID: '5'
+Request search result: Array
+(
+    [id] => 3
+    [status] => pending
+)
+
+Query: UPDATE transport_requests SET status = ? WHERE id = ?
+Params: ['matched', '3']
+Execute result: true
+Affected rows: 1
+Match insertion params: request_id='3', truck_id='1', farmer_id='4'
+Match created with ID: 10
+Verification - Updated record: Array
+(
+    [status] => matched
+)
+
+POST Data: Array
+(
+    [requestId] => 4
+    [farmerId] => 4
+)
+
+SESSION Data: Array
+(
+    [farmer_id] => 4
+    [tractor_id] => 5
+    [trucks_error] => Array
+        (
+            [0] => Invalid license plate format. Expected format: ABC123 or ABC1234
+        )
+
+)
+
+
+Cleaned Request ID: '4', Status: 'matched', Farmer ID: '4'
+User ID from session: '5'
+Actual Truck ID found: '1' for User ID: '5'
+Request search result: Array
+(
+    [id] => 4
+    [status] => pending
+)
+
+Query: UPDATE transport_requests SET status = ? WHERE id = ?
+Params: ['matched', '4']
+Execute result: true
+Affected rows: 1
+Match insertion params: request_id='4', truck_id='1', farmer_id='4'
+Match created with ID: 11
+Verification - Updated record: Array
+(
+    [status] => matched
+)
+

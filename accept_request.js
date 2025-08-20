@@ -1,39 +1,23 @@
 let currentRequestId = null;
+let currentFarmerId = null;
 
-// Updated Accept Request Function - gets data from DOM
-function acceptRequest(requestId) {
-    // Find the request card that contains this button
-    const requestCard = event.target.closest('.request-card');
+// Updated Accept Request Function - gets data from parameters
+function acceptRequest(requestId, produceType, quantity, pickupLocation, destination, urgencyLevel, farmerName, farmerId) {
+    // Store all the data globally for later use
+    currentRequestId = requestId;
+    currentFarmerId = farmerId.trim(); // Store farmer ID and trim whitespace
     
-    if (!requestCard) {
-        alert('Could not find request details');
-        return;
-    }
+    console.log('Accepting request:', {
+        requestId: currentRequestId,
+        farmerId: currentFarmerId,
+        farmerName: farmerName
+    });
     
-    // Extract data from the DOM
-    const produceElement = requestCard.querySelector('.detail-content p');
-    const produce = produceElement ? produceElement.textContent : 'Unknown';
-    
-    const pickupElement = requestCard.querySelector('.detail-item:nth-child(2) .detail-content p');
-    const pickup = pickupElement ? pickupElement.textContent : 'Unknown';
-    
-    const destinationElement = requestCard.querySelector('.detail-item:nth-child(3) .detail-content p');
-    const destination = destinationElement ? destinationElement.textContent : 'Unknown';
-    
-    const urgencyElement = requestCard.querySelector('.urgency-badge');
-    const urgencyText = urgencyElement ? urgencyElement.textContent.replace(' Priority', '') : 'Unknown';
-    const urgency = urgencyText.toLowerCase();
-    
-    const farmerElement = requestCard.querySelector('.farmer-info span');
-    const farmerName = farmerElement ? farmerElement.textContent : 'Unknown';
-    
-    // Show confirmation popup
-    showConfirmAccept(requestId, produce, pickup, destination, urgency, farmerName);
+    // Show confirmation popup with all the data
+    showConfirmAccept(requestId, produceType, pickupLocation, destination, urgencyLevel, farmerName);
 }
 
 function showConfirmAccept(requestId, produce, pickup, destination, urgency, farmerName) {
-    currentRequestId = requestId;
-    
     const preview = document.getElementById('requestPreview');
     const urgencyClass = `urgency-${urgency.toLowerCase()}`;
     
@@ -93,37 +77,34 @@ function showConfirmAccept(requestId, produce, pickup, destination, urgency, far
     document.body.style.overflow = 'hidden';
 }
 
-function hideConfirmAccept() {
-    document.getElementById('confirmOverlay').classList.remove('show');
-    document.body.style.overflow = 'auto';
-    currentRequestId = null;
-    
-    const btn = document.getElementById('confirmAcceptBtn');
-    btn.classList.remove('loading');
-    btn.innerHTML = '<i class="fas fa-check"></i> Accept Request';
-    btn.disabled = false;
-}
-
+// FIXED: Single function to handle the actual acceptance
 function processAcceptRequest() {
-    if (!currentRequestId) {
-        console.error('No request ID set');
-        return;
-    }
-
     const btn = document.getElementById('confirmAcceptBtn');
     btn.disabled = true;
     btn.innerHTML = '<div class="loading-spinner"></div> Processing...';
-
-    console.log('Sending request for ID:', currentRequestId);
+    
+    // Make sure we have both IDs
+    if (!currentRequestId || !currentFarmerId) {
+        showErrorMessage('Missing request or farmer information. Please try again.');
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-check"></i> Accept Request';
+        return;
+    }
+    
+    console.log('Sending request with:', {
+        requestId: currentRequestId,
+        farmerId: currentFarmerId
+    });
 
     fetch('accept_request.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: `requestId=${encodeURIComponent(currentRequestId)}`
+        body: `requestId=${encodeURIComponent(currentRequestId)}&farmerId=${encodeURIComponent(currentFarmerId)}`
     })
     .then(response => {
+        console.log('Response status:', response.status);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -133,7 +114,11 @@ function processAcceptRequest() {
         console.log('Response data:', data);
         if (data.success) {
             showSuccessMessage(data.message);
-            // Update UI or reload
+            hideConfirmAccept();
+            // Update UI or reload to reflect the new status
+            setTimeout(() => {
+                location.reload(); // Reload to show updated status
+            }, 1500);
         } else {
             showErrorMessage(data.message || 'Server reported failure');
             console.error('Server error:', data);
@@ -147,6 +132,26 @@ function processAcceptRequest() {
         btn.disabled = false;
         btn.innerHTML = '<i class="fas fa-check"></i> Accept Request';
     });
+}
+
+function hideConfirmAccept() {
+    document.getElementById('confirmOverlay').classList.remove('show');
+    document.body.style.overflow = 'auto';
+    currentRequestId = null;
+    currentFarmerId = null;
+    
+    const btn = document.getElementById('confirmAcceptBtn');
+    btn.classList.remove('loading');
+    btn.innerHTML = '<i class="fas fa-check"></i> Accept Request';
+    btn.disabled = false;
+}
+
+function closeConfirmOverlay() {
+    document.getElementById('confirmOverlay').classList.remove('show');
+    document.body.style.overflow = '';
+    // Clear the stored IDs
+    currentRequestId = null;
+    currentFarmerId = null;
 }
 
 function showSuccessMessage(message) {
@@ -273,13 +278,6 @@ function updateRequestDisplay(requestId) {
     if (requestCard) {
         // Either remove the card or update its status visually
         requestCard.style.display = 'none';
-        
-        // OR update status visually if you want to keep it visible
-        // const statusElement = requestCard.querySelector('.request-status');
-        // if (statusElement) {
-        //     statusElement.textContent = 'Accepted';
-        //     statusElement.classList.add('status-accepted');
-        // }
     }
 }
 

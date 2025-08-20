@@ -858,9 +858,7 @@
     transform: scale(1.1);
 }
 
-.action-btn .btn-delivered.hidden {
-    opacity: 0;
-}
+
 
 
 @keyframes fadeIn {

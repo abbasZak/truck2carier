@@ -1793,6 +1793,17 @@ body.modal-open {
     gap: 1rem;
 }
 
+#profile-link {
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    gap: 1.3rem;
+    align-items: center;
+}
+
+
+
+
 @keyframes fadeInUp {
     from {
         opacity: 0;

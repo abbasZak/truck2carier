@@ -48,13 +48,7 @@
             </div>
         </div>
 
-        <?php 
-            foreach ($errors as $err) {
-                echo $err;
-            }
-            
         
-        ?>
         <!-- Form Container -->
         <div class="form-container">
             <!-- Error Message -->

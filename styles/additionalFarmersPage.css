@@ -249,7 +249,7 @@
             animation: float 8s ease-in-out infinite reverse;
         }
 
-        .error-message {
+.error-message {
     display: flex;
     align-items: flex-start;
     background-color: #ffe5e5;

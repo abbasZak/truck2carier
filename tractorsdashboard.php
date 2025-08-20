@@ -2,7 +2,7 @@
 session_start();
 include("connect.php");
 
-$sql = "SELECT 
+$sql = "SELECT  
             tr.id AS request_id,
             tr.produce_type,
             tr.quantity,
@@ -12,7 +12,9 @@ $sql = "SELECT
             tr.additional_information,
             tr.status,
             tr.created_at,
-            u.name AS farmer_name
+            u.id AS farmer_id,     
+            u.name AS farmer_name,
+            u.phone AS phone_number
         FROM transport_requests tr
         JOIN users u ON tr.farmer_id = u.id
         ORDER BY tr.created_at DESC";
@@ -28,6 +30,28 @@ if ($tracktorId) {
     $stmt->execute([$tracktorId]);
     $User = $stmt->fetch(PDO::FETCH_ASSOC);
 }
+$status_pending = "pending";
+
+$sql3 = "SELECT COUNT(*) AS total_pending 
+         FROM transport_requests 
+         WHERE status = ?";
+
+$stmt3 = $pdo->prepare($sql3);
+$stmt3->execute([$status_pending]); // ✅ run query with value
+$row_pending = $stmt3->fetch(PDO::FETCH_ASSOC);
+
+
+$status_matched = "matched";
+
+$sql4 = "SELECT COUNT(*) AS total_matched 
+         FROM transport_requests 
+         WHERE status = ?";
+
+$stmt4 = $pdo->prepare($sql4);
+$stmt4->execute([$status_matched]); // ✅ run query with value
+$row_matched = $stmt4->fetch(PDO::FETCH_ASSOC);
+
+
 
 ?>
 
@@ -62,7 +86,8 @@ if ($tracktorId) {
             <?php 
                 if (isset($tracktorId) && $tracktorId) {
                     ?> 
-                        <div class="user-info">
+                        <a href="#" id="profile-link">
+                            <div class="user-info">
                             <div class="user-avatar">
                                 M
                                 <div class="notification-dot"></div>
@@ -72,7 +97,9 @@ if ($tracktorId) {
                                 <i class="fas fa-sign-out-alt"></i> Logout
                             </a>
 
-                        </div>        
+                        </div>
+                        </a>
+                                
                     <?php
                 } else {
                     ?> 
@@ -114,7 +141,7 @@ if ($tracktorId) {
                             <h3>Pending Requests</h3>
                         </div>
                     </div>
-                    <div class="stat-value">8</div>
+                    <div class="stat-value"><?= $row_pending['total_pending'] ?></div>
                 </div>
 
                 <div class="stats-card">
@@ -126,20 +153,10 @@ if ($tracktorId) {
                             <h3>Active Trips</h3>
                         </div>
                     </div>
-                    <div class="stat-value">2</div>
+                    <div class="stat-value"><?= $row_matched['total_matched']; ?></div>
                 </div>
 
-                <div class="stats-card">
-                    <div class="stat-header">
-                        <div class="stat-icon">
-                            <i class="fas fa-money-bill-wave"></i>
-                        </div>
-                        <div class="stat-info">
-                            <h3>This Month</h3>
-                        </div>
-                    </div>
-                    <div class="stat-value">₦125k</div>
-                </div>
+                
             </div>
 
             <!-- Requests List -->
@@ -203,6 +220,16 @@ if ($tracktorId) {
                                 </div>
                             </div>
 
+                            <?php if($request['status'] === "matched"): ?>
+                                <div class="detail-item">
+                                    <div class="detail-icon"><i class="fas fa-phone"></i></div>
+                                    <div class="detail-content">
+                                        <h4>Contact</h4>
+                                        <p><?= htmlspecialchars($request['phone_number']) ?></p>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+
                             <div class="detail-item">
                                 <div class="detail-icon"><i class="fas fa-flag-checkered"></i></div>
                                 <div class="detail-content">
@@ -240,7 +267,8 @@ if ($tracktorId) {
                                     '<?= htmlspecialchars($request['pickup_location'], ENT_QUOTES); ?>', 
                                     '<?= htmlspecialchars($request['destination'], ENT_QUOTES); ?>', 
                                     '<?= htmlspecialchars($request['urgency_level'], ENT_QUOTES); ?>', 
-                                    '<?= htmlspecialchars($request['farmer_name'], ENT_QUOTES); ?>'
+                                    '<?= htmlspecialchars($request['farmer_name'], ENT_QUOTES); ?>',
+                                    '<?= htmlspecialchars($request['farmer_id'], ENT_QUOTES); ?>'
                                 )">
                                     <i class="fas fa-check"></i> Accept
                                 </button>

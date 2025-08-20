@@ -3,6 +3,7 @@
     include("connect.php");
 
     $farmersid = $_SESSION['farmer_id'];
+    
 
     if ( !isset($farmersid)) {
         header("location: index.php");
@@ -65,7 +66,7 @@
                         </div>
                         <div class="badge badge-secondary">
                             <i class="fas fa-calendar-alt"></i>
-                            <span id="experienceYears"><?= $farmer['years_of_experiece']; ?> years of experiece</span>
+                            <span id="experienceYears"><?= $farmer['years_of_experiece']; ?> years of fexperiece</span>
                         </div>
                     </div>
                 </div>
