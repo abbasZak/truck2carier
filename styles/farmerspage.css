@@ -858,7 +858,723 @@
     transform: scale(1.1);
 }
 
+/* Delivery Success Popup Styles */
+.delivery-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
 
+.delivery-popup-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.delivery-popup-overlay.hide {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.9);
+}
+
+.delivery-popup {
+    background: white;
+    border-radius: 25px;
+    padding: 3rem 2.5rem;
+    text-align: center;
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.15),
+        0 0 100px rgba(76, 175, 80, 0.3);
+    max-width: 450px;
+    width: 90%;
+    position: relative;
+    overflow: hidden;
+    transform: scale(0.7) translateY(50px);
+    animation: popupEnter 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.delivery-popup-overlay.show .delivery-popup {
+    transform: scale(1) translateY(0);
+}
+
+.delivery-popup::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, 
+        #4CAF50 0%, 
+        #66BB6A 25%, 
+        #81C784 50%, 
+        #66BB6A 75%, 
+        #4CAF50 100%);
+    animation: gradientShift 3s ease-in-out infinite;
+}
+
+.popup-icon {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, #4CAF50, #66BB6A);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2rem;
+    font-size: 2.5rem;
+    color: white;
+    box-shadow: 
+        0 15px 35px rgba(76, 175, 80, 0.4),
+        inset 0 2px 10px rgba(255, 255, 255, 0.3);
+    animation: iconBounce 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+.popup-icon i {
+    animation: checkmark 0.8s ease-in-out 0.5s both;
+    transform: scale(0);
+}
+
+.popup-content h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #2E7D32;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #2E7D32, #4CAF50);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: titleSlide 0.6s ease-out 0.3s both;
+    transform: translateY(20px);
+    opacity: 0;
+}
+
+.popup-content p {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    animation: textFade 0.6s ease-out 0.4s both;
+    opacity: 0;
+}
+
+.popup-content p strong {
+    color: #2E7D32;
+    font-weight: 700;
+    background: linear-gradient(135deg, #4CAF50, #66BB6A);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Confetti Animation */
+.popup-decoration {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    overflow: hidden;
+    border-radius: 25px;
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: linear-gradient(45deg, #4CAF50, #66BB6A);
+    animation: confetti-fall 2s linear infinite;
+    border-radius: 2px;
+}
+
+.confetti:nth-child(1) {
+    left: 10%;
+    animation-delay: 0s;
+    background: linear-gradient(45deg, #FFC107, #FFB300);
+}
+
+.confetti:nth-child(2) {
+    left: 30%;
+    animation-delay: 0.3s;
+    background: linear-gradient(45deg, #2196F3, #1976D2);
+    animation-duration: 1.8s;
+}
+
+.confetti:nth-child(3) {
+    left: 50%;
+    animation-delay: 0.1s;
+    background: linear-gradient(45deg, #4CAF50, #66BB6A);
+}
+
+.confetti:nth-child(4) {
+    left: 70%;
+    animation-delay: 0.4s;
+    background: linear-gradient(45deg, #FF9800, #F57C00);
+    animation-duration: 2.2s;
+}
+
+.confetti:nth-child(5) {
+    left: 90%;
+    animation-delay: 0.2s;
+    background: linear-gradient(45deg, #9C27B0, #7B1FA2);
+    animation-duration: 1.9s;
+}
+
+/* Completed Indicator Styles */
+.completed-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    background: linear-gradient(135deg, #4CAF50, #66BB6A);
+    color: white;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+    animation: completedSlideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.completed-indicator i {
+    font-size: 1rem;
+    animation: completedIconSpin 0.6s ease-out;
+}
+
+/* Keyframe Animations */
+@keyframes popupEnter {
+    0% {
+        transform: scale(0.7) translateY(50px);
+        opacity: 0;
+    }
+    60% {
+        transform: scale(1.05) translateY(-10px);
+        opacity: 0.9;
+    }
+    100% {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes iconBounce {
+    0% {
+        transform: scale(0) rotate(-180deg);
+        opacity: 0;
+    }
+    60% {
+        transform: scale(1.2) rotate(10deg);
+        opacity: 0.9;
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+@keyframes checkmark {
+    0% {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes titleSlide {
+    0% {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes textFade {
+    0% {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes confetti-fall {
+    0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(500px) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+@keyframes gradientShift {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes completedSlideIn {
+    0% {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes completedIconSpin {
+    0% {
+        transform: rotate(-90deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 640px) {
+    .delivery-popup {
+        padding: 2rem 1.5rem;
+        margin: 1rem;
+        width: calc(100% - 2rem);
+    }
+
+    .popup-icon {
+        width: 80px;
+        height: 80px;
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .popup-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .popup-content p {
+        font-size: 1rem;
+    }
+
+    .confetti {
+        width: 8px;
+        height: 8px;
+    }
+}
+
+/* Accessibility enhancements */
+@media (prefers-reduced-motion: reduce) {
+    .delivery-popup,
+    .popup-icon,
+    .popup-icon i,
+    .popup-content h2,
+    .popup-content p,
+    .confetti,
+    .completed-indicator,
+    .completed-indicator i {
+        animation: none;
+    }
+    
+    .delivery-popup-overlay.show .delivery-popup {
+        transform: scale(1) translateY(0);
+    }
+    
+    .popup-icon i {
+        transform: scale(1);
+    }
+    
+    .popup-content h2 {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    
+    .popup-content p {
+        opacity: 1;
+    }
+}
+
+/* Add these styles to your existing farmerspage.css file */
+
+/* Delivery Success Popup Styles */
+.delivery-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.delivery-popup-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.delivery-popup-overlay.hide {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.9);
+}
+
+.delivery-popup {
+    background: white;
+    border-radius: 25px;
+    padding: 3rem 2.5rem;
+    text-align: center;
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.15),
+        0 0 100px rgba(76, 175, 80, 0.3);
+    max-width: 450px;
+    width: 90%;
+    position: relative;
+    overflow: hidden;
+    transform: scale(0.7) translateY(50px);
+    animation: popupEnter 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.delivery-popup-overlay.show .delivery-popup {
+    transform: scale(1) translateY(0);
+}
+
+.delivery-popup::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, 
+        #4CAF50 0%, 
+        #66BB6A 25%, 
+        #81C784 50%, 
+        #66BB6A 75%, 
+        #4CAF50 100%);
+    animation: gradientShift 3s ease-in-out infinite;
+}
+
+.popup-icon {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, #4CAF50, #66BB6A);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2rem;
+    font-size: 2.5rem;
+    color: white;
+    box-shadow: 
+        0 15px 35px rgba(76, 175, 80, 0.4),
+        inset 0 2px 10px rgba(255, 255, 255, 0.3);
+    animation: iconBounce 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+.popup-icon i {
+    animation: checkmark 0.8s ease-in-out 0.5s both;
+    transform: scale(0);
+}
+
+.popup-content h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #2E7D32;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #2E7D32, #4CAF50);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: titleSlide 0.6s ease-out 0.3s both;
+    transform: translateY(20px);
+    opacity: 0;
+}
+
+.popup-content p {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    animation: textFade 0.6s ease-out 0.4s both;
+    opacity: 0;
+}
+
+.popup-content p strong {
+    color: #2E7D32;
+    font-weight: 700;
+    background: linear-gradient(135deg, #4CAF50, #66BB6A);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Confetti Animation */
+.popup-decoration {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    overflow: hidden;
+    border-radius: 25px;
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: linear-gradient(45deg, #4CAF50, #66BB6A);
+    animation: confetti-fall 2s linear infinite;
+    border-radius: 2px;
+}
+
+.confetti:nth-child(1) {
+    left: 10%;
+    animation-delay: 0s;
+    background: linear-gradient(45deg, #FFC107, #FFB300);
+}
+
+.confetti:nth-child(2) {
+    left: 30%;
+    animation-delay: 0.3s;
+    background: linear-gradient(45deg, #2196F3, #1976D2);
+    animation-duration: 1.8s;
+}
+
+.confetti:nth-child(3) {
+    left: 50%;
+    animation-delay: 0.1s;
+    background: linear-gradient(45deg, #4CAF50, #66BB6A);
+}
+
+.confetti:nth-child(4) {
+    left: 70%;
+    animation-delay: 0.4s;
+    background: linear-gradient(45deg, #FF9800, #F57C00);
+    animation-duration: 2.2s;
+}
+
+.confetti:nth-child(5) {
+    left: 90%;
+    animation-delay: 0.2s;
+    background: linear-gradient(45deg, #9C27B0, #7B1FA2);
+    animation-duration: 1.9s;
+}
+
+/* Completed Indicator Styles */
+.completed-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    background: linear-gradient(135deg, #4CAF50, #66BB6A);
+    color: white;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+    animation: completedSlideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.completed-indicator i {
+    font-size: 1rem;
+    animation: completedIconSpin 0.6s ease-out;
+}
+
+/* Keyframe Animations */
+@keyframes popupEnter {
+    0% {
+        transform: scale(0.7) translateY(50px);
+        opacity: 0;
+    }
+    60% {
+        transform: scale(1.05) translateY(-10px);
+        opacity: 0.9;
+    }
+    100% {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes iconBounce {
+    0% {
+        transform: scale(0) rotate(-180deg);
+        opacity: 0;
+    }
+    60% {
+        transform: scale(1.2) rotate(10deg);
+        opacity: 0.9;
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+@keyframes checkmark {
+    0% {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes titleSlide {
+    0% {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes textFade {
+    0% {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes confetti-fall {
+    0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(500px) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+@keyframes gradientShift {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes completedSlideIn {
+    0% {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes completedIconSpin {
+    0% {
+        transform: rotate(-90deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 640px) {
+    .delivery-popup {
+        padding: 2rem 1.5rem;
+        margin: 1rem;
+        width: calc(100% - 2rem);
+    }
+
+    .popup-icon {
+        width: 80px;
+        height: 80px;
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .popup-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .popup-content p {
+        font-size: 1rem;
+    }
+
+    .confetti {
+        width: 8px;
+        height: 8px;
+    }
+}
+
+/* Accessibility enhancements */
+@media (prefers-reduced-motion: reduce) {
+    .delivery-popup,
+    .popup-icon,
+    .popup-icon i,
+    .popup-content h2,
+    .popup-content p,
+    .confetti,
+    .completed-indicator,
+    .completed-indicator i {
+        animation: none;
+    }
+    
+    .delivery-popup-overlay.show .delivery-popup {
+        transform: scale(1) translateY(0);
+    }
+    
+    .popup-icon i {
+        transform: scale(1);
+    }
+    
+    .popup-content h2 {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    
+    .popup-content p {
+        opacity: 1;
+    }
+}
 
 
 @keyframes fadeIn {

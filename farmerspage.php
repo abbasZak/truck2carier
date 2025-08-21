@@ -284,7 +284,7 @@
             
             <div class="request-actions">
                 <?php if($request['status'] === 'matched'): ?>
-                <button class="action-btn btn-delivered" id="deliveredBtn" >
+                <button class="action-btn btn-delivered" id="deliveredBtn" data-requestId="<?= $request['id'] ?>" >
                     <i class="fas fa-check-circle"></i> 
                     Delivered
                 </button>
@@ -383,6 +383,7 @@
     </div>
     <script src="js/farmerspage.js"></script>
     <script src="send_request.js"></script>
-    <script src="deliverstatus.js"></script>
+    
+    <script src="statusComplete.js"></script>
 </body>
 </html>

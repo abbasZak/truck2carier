@@ -86,7 +86,7 @@ $row_matched = $stmt4->fetch(PDO::FETCH_ASSOC);
             <?php 
                 if (isset($tracktorId) && $tracktorId) {
                     ?> 
-                        <a href="#" id="profile-link">
+                        <a href="tractorProfilepage.php" id="profile-link">
                             <div class="user-info">
                             <div class="user-avatar">
                                 M
